@@ -1,64 +1,68 @@
 @import "syntax-variables";
 
-@black: #0D0D0D;
+
 @green: #A6E22E;
 @orange: #FD971F;
 @blue: #66D9EF;
 @yellow: #E6DB74;
-@pink: #F92672;
-@purple: #AE81FF;
+@pink: #ee1865;
+@purple: #9368e2;
 @white: #fff;
-@grey: #755e67;
+@grey: #75715E;
+@dark: #0D0D0D;
+@offwhite: #F8F8F2;
 
 atom-text-editor {
-  background-color: @syntax-background-color;
-  color: @syntax-text-color;
 
-  .wrap-guide {
+
+  ::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+  }
+
+  ::-webkit-scrollbar-track {
     background-color: @syntax-wrap-guide-color;
   }
 
+  ::-webkit-scrollbar-thumb {
+    background-color: lighten(@syntax-wrap-guide-color, 10%);
+  }
+
+  .wrap-guide {
+    background-color: fade(@white, 1%);
+  }
+
   .indent-guide {
-    color: @syntax-indent-guide-color;
+    color: fade(@white, 15%);
   }
 
   .invisible-character {
     color: @syntax-invisible-character-color;
   }
 
-  .gutter {
-    background-color: @syntax-gutter-background-color;
-    color: @syntax-gutter-text-color;
 
-    .line-number {
-      &.cursor-line {
-        background-color: @syntax-gutter-background-color-selected;
-        color: @syntax-gutter-text-color-selected;
-      }
-
-      &.cursor-line-no-selection {
-        color: @syntax-gutter-text-color-selected;
-      }
-    }
+  &, .gutter {
+    background-color: @dark;
+    color: @offwhite;
   }
 
-  .gutter .line-number.folded,
-  .gutter .line-number:after,
-  .fold-marker:after {
-    color: @black;
+  &.is-focused .cursor {
+    border-color: @offwhite;
+  }
+
+  &.is-focused .selection .region {
+    background-color: lighten(@dark, 20%);
+  }
+
+  &.is-focused .line-number.cursor-line-no-selection,
+  &.is-focused .line.cursor-line {
+    background-color: lighten(@dark, 10%);
   }
 
   .invisible {
     color: @syntax-text-color;
   }
 
-  .cursor {
-    color: @syntax-cursor-color;
-  }
-
-  .selection .region {
-    background-color: @syntax-selection-color;
-  }
 }
 
 
@@ -70,22 +74,6 @@ atom-text-editor {
 
 .syntax--keyword {
   color: @pink;
-
-  &.syntax--control {
-    color: @pink;
-  }
-
-  &.syntax--operator {
-    color: @pink;
-  }
-
-  &.syntax--other.syntax--special-method {
-    color: @blue;
-  }
-
-  &.syntax--other.syntax--unit {
-    color: @orange;
-  }
 }
 
 .syntax--storage {
@@ -104,11 +92,7 @@ atom-text-editor {
   }
 
   &.syntax--other.syntax--color {
-    color: @blue;
-  }
-
-  &.syntax--other.syntax--symbol {
-    color: @green;
+    color: @purple;
   }
 }
 
@@ -116,7 +100,7 @@ atom-text-editor {
   color: @purple;
 
   &.syntax--interpolation {
-    color: darken(@purple, 10%);
+    color: @purple;
   }
 
   &.syntax--parameter.syntax--function {
@@ -124,9 +108,9 @@ atom-text-editor {
   }
 }
 
-.syntax--invalid.syntax--illegal {
+.syntax--invalid {
   background-color: @pink;
-  color: @syntax-background-color;
+  color: @offwhite;
 }
 
 .syntax--string {
@@ -204,10 +188,6 @@ atom-text-editor {
 }
 
 .syntax--entity {
-//  &.syntax--name.syntax--function {
-//    color: @green;
-//  }
-
   &.syntax--name.syntax--type {
     color: @orange;
     text-decoration: underline;
@@ -276,51 +256,16 @@ atom-text-editor {
   color: @syntax-text-color;
 }
 
-.syntax--markup {
-  &.syntax--bold {
-    color: @orange;
-    font-weight: bold;
-  }
 
-  &.syntax--changed {
-    color: @purple;
-  }
+atom-text-editor.editor {
+    .is-focused .selection .region {
+      background-color: lighten(@dark, 20%);
+    }
 
-  &.syntax--deleted {
-    color: @pink;
-  }
-
-  &.syntax--italic {
-    color: @purple;
-    font-style: italic;
-  }
-
-  &.syntax--heading .syntax--punctuation.syntax--definition.syntax--heading {
-    color: @blue;
-  }
-
-  &.syntax--inserted {
-    color: @green;
-  }
-
-  &.syntax--list {
-    color: @pink;
-  }
-
-  &.syntax--quote {
-    color: @yellow;
-  }
-
-  &.syntax--raw.syntax--inline {
-    color: @green;
-  }
-}
-
-.syntax--source.syntax--gfm .syntax--markup {
-  -webkit-font-smoothing: auto;
-  &.syntax--heading {
-    color: @green;
-  }
+    .is-focused .line-number.cursor-line-no-selection,
+    .is-focused .line.cursor-line {
+      background-color: lighten(@dark, 10%);
+    }
 }
 
 // Mini editor
