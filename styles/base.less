@@ -78,6 +78,7 @@ atom-text-editor {
 
 .syntax--storage {
   color: @blue;
+  font-size: italic;
 }
 
 .syntax--constant {
@@ -97,14 +98,21 @@ atom-text-editor {
 }
 
 .syntax--variable {
-  color: @purple;
 
+  .syntax--constant{
+    color: @purple;
+  }
+
+  .syntax--other.syntax--object{
+    color: @white;
+  }
   &.syntax--interpolation {
     color: @purple;
   }
 
   &.syntax--parameter.syntax--function {
     color: @orange;
+    font-style: italic;
   }
 }
 
