@@ -1,6 +1,17 @@
-Atom package for a monokai-dark theme
+# monokai-dark-syntax
+---
+
+A monokai dark syntax theme for atom
 
 
-Implementation of the popular monokai-dark theme for atom.
+## Supported Languages
+* __python__
+* __go__
+* __scala__
+* __SQL__
 
-Optimised for python ensuring the function definition colour is blue whilst the function call is white.
+This list contains the languages I regularly use and make changes for.
+
+## Screenshots
+
+TODO
