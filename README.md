@@ -1,5 +1,4 @@
 # monokai-dark-syntax
----
 
 A monokai dark syntax theme for atom
 
